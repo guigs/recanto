@@ -1,0 +1,28 @@
+<h1> Relatório Mensal <%= @ano %></h1>
+
+<table>
+  <tr>
+    <th>Mês</th>
+    <th>Faturamento</th>
+    <th>Custo</th>
+    <th>Lucro</th>
+    <th>Margem</th>
+    <th>Dias</th>
+    <th>Fat/dia</th>
+    <th>Lucro/dia</th>
+  </tr>
+<% for mes in @meses %>
+  <tr>
+    <td>
+      <%= Date::ABBR_MONTHNAMES[Date.new(@ano.to_i, mes.mes.to_i, 1).month] %>
+    </td>
+    <td><%=h number_to_currency(mes.faturamento) %></td>
+    <td><%=h number_to_currency(mes.custo) %></td>
+    <td><%=h number_to_currency(mes.faturamento.to_f - mes.custo.to_f) %></td>
+    <td><%=h number_to_percentage(100*(mes.faturamento.to_f - mes.custo.to_f)/mes.custo.to_f, :precision => 0) %></td>
+    <td><%=h mes.dias.to_i %></td>
+    <td><%=h number_to_currency(mes.faturamento.to_f/mes.dias.to_i) %></td>
+    <td><%=h number_to_currency((mes.faturamento.to_f - mes.custo.to_f) / mes.dias.to_i) %></td>
+  </tr>
+<% end %>
+</table>

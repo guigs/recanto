@@ -1,0 +1,23 @@
+<p>
+  <b>Param:</b>
+  <%=h @produto.param %>
+</p>
+
+<p>
+  <b>Descricao:</b>
+  <%=h @produto.descricao %>
+</p>
+
+<p>
+  <b>Custo unitario:</b>
+  <%=h @produto.custo_unitario %>
+</p>
+
+<p>
+  <b>Preco unitario:</b>
+  <%=h @produto.preco_unitario %>
+</p>
+
+
+<%= link_to 'Edit', edit_produto_path(@produto) %> |
+<%= link_to 'Back', produtos_path %>

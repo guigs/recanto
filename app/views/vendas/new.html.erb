@@ -1,0 +1,39 @@
+<h1>New venda</h1>
+
+<% form_for(@venda) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :data %><br />
+    <%= f.date_select :data %>
+  </p>
+  <p>
+    <%= f.label :ordem %><br />
+    <%= f.text_field :ordem %>
+  </p>
+  <p>
+    <%= f.label :descricao %><br />
+    <%= f.text_field :descricao %>
+  </p>
+  <p>
+    <%= f.label :quantidade %><br />
+    <%= f.text_field :quantidade %>
+  </p>
+  <p>
+    <%= f.label :custo_unitario %><br />
+    <%= f.text_field :custo_unitario %>
+  </p>
+  <p>
+    <%= f.label :valor_total %><br />
+    <%= f.text_field :valor_total %>
+  </p>
+  <p>
+    <%= f.label :produto_id %><br />
+    <%= f.text_field :produto_id %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', vendas_path %>

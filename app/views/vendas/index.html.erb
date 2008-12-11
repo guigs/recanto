@@ -1,0 +1,32 @@
+<h1>Listing vendas</h1>
+
+<table>
+  <tr>
+    <th>Data</th>
+    <th>Ordem</th>
+    <th>Descricao</th>
+    <th>Quantidade</th>
+    <th>Custo unitario</th>
+    <th>Valor total</th>
+    <th>Produto</th>
+  </tr>
+
+<% for venda in @vendas %>
+  <tr>
+    <td><%=h venda.data %></td>
+    <td><%=h venda.ordem %></td>
+    <td><%=h venda.descricao %></td>
+    <td><%=h venda.quantidade %></td>
+    <td><%=h venda.custo_unitario %></td>
+    <td><%=h venda.valor_total %></td>
+    <td><%=h venda.produto_id %></td>
+    <td><%= link_to 'Show', venda %></td>
+    <td><%= link_to 'Edit', edit_venda_path(venda) %></td>
+    <td><%= link_to 'Destroy', venda, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New venda', new_venda_path %>

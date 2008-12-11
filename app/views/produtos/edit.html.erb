@@ -1,0 +1,28 @@
+<h1>Editing produto</h1>
+
+<% form_for(@produto) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :param %><br />
+    <%= f.text_field :param %>
+  </p>
+  <p>
+    <%= f.label :descricao %><br />
+    <%= f.text_field :descricao %>
+  </p>
+  <p>
+    <%= f.label :custo_unitario %><br />
+    <%= f.text_field :custo_unitario %>
+  </p>
+  <p>
+    <%= f.label :preco_unitario %><br />
+    <%= f.text_field :preco_unitario %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @produto %> |
+<%= link_to 'Back', produtos_path %>

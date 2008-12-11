@@ -1,0 +1,38 @@
+<p>
+  <b>Data:</b>
+  <%=h @venda.data %>
+</p>
+
+<p>
+  <b>Ordem:</b>
+  <%=h @venda.ordem %>
+</p>
+
+<p>
+  <b>Descricao:</b>
+  <%=h @venda.descricao %>
+</p>
+
+<p>
+  <b>Quantidade:</b>
+  <%=h @venda.quantidade %>
+</p>
+
+<p>
+  <b>Custo unitario:</b>
+  <%=h @venda.custo_unitario %>
+</p>
+
+<p>
+  <b>Valor total:</b>
+  <%=h @venda.valor_total %>
+</p>
+
+<p>
+  <b>Produto:</b>
+  <%=h @venda.produto_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_venda_path(@venda) %> |
+<%= link_to 'Back', vendas_path %>

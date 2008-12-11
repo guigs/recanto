@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  param: MyString
+  descricao: MyString
+  custo_unitario: 9.99
+  preco_unitario: 9.99
+
+two:
+  param: MyString
+  descricao: MyString
+  custo_unitario: 9.99
+  preco_unitario: 9.99

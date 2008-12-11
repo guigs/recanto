@@ -1,0 +1,31 @@
+<h1>Editar venda</h1>
+
+<% form_for(@venda) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :data %><br />
+    <%= f.date_select :data %>
+  </p>
+  <p>
+    <%= f.label :descricao %><br />
+    <%= f.text_field :descricao %>
+  </p>
+  <p>
+    <%= f.label :quantidade %><br />
+    <%= f.text_field(:quantidade, :value=>number_with_precision(@venda.quantidade, :precision => 2)) %>
+  </p>
+  <p>
+    <%= f.label :custo_unitario %><br />
+    <%= f.text_field(:custo_unitario, :value=>number_with_precision(@venda.custo_unitario, :precision => 2)) %>
+  </p>
+  <p>
+    <%= f.label :valor_total %><br />
+    <%= f.text_field(:valor_total, :value=>number_with_precision(@venda.valor_total, :precision => 2)) %>
+  </p>
+  <p>
+    <%= f.submit "Atualizar" %>
+  </p>
+<% end %>
+
+<%= link_to "Voltar", :controller => :vendas, :action => :lista, :dia => @venda.data.day, :mes => @venda.data.month, :ano => @venda.data.year %><br />

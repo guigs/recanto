@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  data: 2008-12-04
+  ordem: 1
+  descricao: MyString
+  quantidade: 9.99
+  custo_unitario: 9.99
+  valor_total: 9.99
+  produto_id: 1
+
+two:
+  data: 2008-12-04
+  ordem: 1
+  descricao: MyString
+  quantidade: 9.99
+  custo_unitario: 9.99
+  valor_total: 9.99
+  produto_id: 1
