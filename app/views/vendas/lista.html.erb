@@ -30,23 +30,23 @@
 <tr>
 <% form_for(@venda) do |f| %>
   <td>
-    <%= f.text_field :custo_unitario, :size=>5 %>
+    <%= f.text_field :custo_unitario, :size=>5, :tabindex=>1 %>
   </td>
   <td>
-    <%= f.text_field :quantidade, :size=>3 %>
+    <%= f.text_field :quantidade, :size=>3, :tabindex=>2 %>
   </td>
   <td></td>
   <td>
     <%= f.hidden_field :data %>
-    <%= f.text_field :descricao, :size=>20 %>
+    <%= f.text_field :descricao, :size=>20, :tabindex=>3 %>
   </td>
   <td></td>
   <td>
-    <%= f.text_field :valor_total, :size=>5 %>
+    <%= f.text_field :valor_total, :size=>5, :tabindex=>4 %>
   </td>
   <td></td>
   <td>
-    <%= f.submit "Criar" %>
+    <%= f.submit "Criar", :tabindex=>5 %>
   </td>
   <td></td>
 <% end %>
@@ -54,8 +54,8 @@
   <tr>
     <th>Total do dia</th>
     <th></th>
-    <th></th>
     <th><%=h number_to_currency(@total.custo_total) %></th>
+    <th></th>
     <th></th>
     <th><%=h number_to_currency(@total.valor_total) %></th>
     <th><%= formata_lucro(@total) %></th>
@@ -67,3 +67,7 @@
 
 <%= link_to "#{I18n.localize(@data_anterior)}, #{Date::DAYNAMES[@data_anterior.wday]}", :controller => :vendas, :action => :lista, :dia => @data_anterior.day, :mes => @data_anterior.month, :ano => @data_anterior.year %><br />
 <%= link_to "#{I18n.localize(@data_proxima)}, #{Date::DAYNAMES[@data_proxima.wday]}" , :controller => :vendas, :action => :lista, :dia => @data_proxima.day,  :mes => @data_proxima.month,  :ano => @data_proxima.year %>
+
+<script>
+  document.getElementById("venda_custo_unitario").focus();
+</script>
