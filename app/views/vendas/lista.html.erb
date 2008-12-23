@@ -2,10 +2,10 @@
 
 <table>
   <tr>
-    <th>Descrição</th>
+    <th>Custo unitário</th>
     <th>Quantidade</th>
-    <th>Custo unitario</th>
     <th>Custo total</th>
+    <th>Descrição</th>
     <th>Valor unitário</th>
     <th>Valor total</th>
     <th>Lucro</th>
@@ -13,11 +13,11 @@
 
 <% for venda in @vendas %>
   <tr>
-    <td><%=h venda.descricao %></td>
-    <td><%=h number_with_precision(venda.quantidade, :precision => 2) %></td>
     <td><%=h number_to_currency(venda.custo_unitario) %></td>
+    <td><%=h number_with_precision(venda.quantidade, :precision => 2) %></td>
     <td><%=h number_to_currency(venda.custo_total) %></td>
     <% @total.custo_unitario = @total.custo_unitario + venda.custo_total %>
+    <td><%=h venda.descricao %></td>
     <td><%=h number_to_currency(venda.valor_unitario) %></td>
     <td><%=h number_to_currency(venda.valor_total) %></td>
     <% @total.valor_total = @total.valor_total + venda.valor_total %>
@@ -30,16 +30,16 @@
 <tr>
 <% form_for(@venda) do |f| %>
   <td>
-    <%= f.hidden_field :data %>
-    <%= f.text_field :descricao, :size=>20 %>
+    <%= f.text_field :custo_unitario, :size=>5 %>
   </td>
   <td>
     <%= f.text_field :quantidade, :size=>3 %>
   </td>
-  <td>
-    <%= f.text_field :custo_unitario, :size=>5 %>
-  </td>
   <td></td>
+  <td>
+    <%= f.hidden_field :data %>
+    <%= f.text_field :descricao, :size=>20 %>
+  </td>
   <td></td>
   <td>
     <%= f.text_field :valor_total, :size=>5 %>
