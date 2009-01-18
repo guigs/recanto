@@ -14,7 +14,7 @@
 <% for mes in @meses %>
   <tr>
     <td>
-      <%= Date::ABBR_MONTHNAMES[Date.new(@ano.to_i, mes.mes.to_i, 1).month] %>
+      <%= I18n.localize(Date.civil(@ano.to_i, mes.mes.to_i, 1), :format => "%b") %>
     </td>
     <td><%=h number_to_currency(mes.faturamento) %></td>
     <td><%=h number_to_currency(mes.custo) %></td>
