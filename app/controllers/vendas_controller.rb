@@ -1,16 +1,32 @@
 class VendasController < ApplicationController
   # GET /vendas
   # GET /vendas.xml
-  def index
-    @vendas = Venda.find(:all)
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @vendas }
+  def index
+    unless (data = params[:date]).nil?
+      redirect_to(
+        :action => 'lista',
+        :dia => data[:day],
+        :mes => data[:month],
+        :ano => data[:year]
+      )
+      return
     end
   end
+#  def index
+#    @vendas = Venda.find(:all)
+#
+#    respond_to do |format|
+#      format.html # index.html.erb
+#      format.xml  { render :xml => @vendas }
+#    end
+#  end
 
   def mensal
+    unless (data = params[:date]).nil?
+      redirect_to(:action => 'mensal', :ano => data[:year])
+      return
+    end
     @ano = params[:ano]
     @meses = Venda.find_by_sql " select
       sum(valor_total) faturamento, sum(custo_unitario*quantidade) custo, count(distinct DAY(data)) dias, MONTH(data) mes
@@ -22,10 +38,10 @@ class VendasController < ApplicationController
   end
 
   def lista
-    @data = Date.new(params[:ano].to_i, params[:mes].to_i, params[:dia].to_i)
+    @data = Date.civil(params[:ano].to_i, params[:mes].to_i, params[:dia].to_i)
     @data_proxima = @data + 1
     @data_anterior = @data - 1
-    @vendas = Venda.find_all_by_data(@data)
+    @vendas = Venda.find_all_by_data(@data, :order=>:id)
     @total = Venda.new(
       :data => @data,
       :quantidade => 1,
@@ -86,7 +102,6 @@ class VendasController < ApplicationController
   # PUT /vendas/1.xml
   def update
     @venda = Venda.find(params[:id])
-
     respond_to do |format|
       @venda.parse_form(params[:venda])
       if @venda.save

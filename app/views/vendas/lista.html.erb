@@ -1,4 +1,4 @@
-<h1>Vendas de <%= I18n.localize(@data) %></h1>
+<h1>Vendas de <%= I18n.localize(@data, :format => "%A") %>, <%= I18n.localize(@data) %></h1>
 
 <table>
   <tr>
@@ -65,8 +65,8 @@
 
 <br />
 
-<%= link_to "#{I18n.localize(@data_anterior)}, #{Date::DAYNAMES[@data_anterior.wday]}", :controller => :vendas, :action => :lista, :dia => @data_anterior.day, :mes => @data_anterior.month, :ano => @data_anterior.year %><br />
-<%= link_to "#{I18n.localize(@data_proxima)}, #{Date::DAYNAMES[@data_proxima.wday]}" , :controller => :vendas, :action => :lista, :dia => @data_proxima.day,  :mes => @data_proxima.month,  :ano => @data_proxima.year %>
+<%= link_to "#{I18n.localize(@data_anterior, :format => "%A")}, #{I18n.localize(@data_anterior)}", :controller => :vendas, :action => :lista, :dia => @data_anterior.day, :mes => @data_anterior.month, :ano => @data_anterior.year %><br />
+<%= link_to "#{I18n.localize(@data_proxima, :format => "%A")}, #{I18n.localize(@data_proxima)}" , :controller => :vendas, :action => :lista, :dia => @data_proxima.day,  :mes => @data_proxima.month,  :ano => @data_proxima.year %>
 
 <script>
   document.getElementById("venda_custo_unitario").focus();

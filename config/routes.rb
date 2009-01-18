@@ -1,11 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
   
   map.connect 'vendas/:dia/:mes/:ano', :controller => 'vendas', :action => 'lista', :requirements => { :ano => /\d{4}/ }
-  map.connect 'vendas/:ano', :controller => 'vendas', :action => 'mensal', :requirements => { :ano => /\d{4}/ }
+  map.connect 'vendas/relatorio/:ano', :controller => 'vendas', :action => 'mensal', :requirements => { :ano => /\d{4}/ }
+  map.connect 'vendas/relatorio', :controller => 'vendas', :action => 'mensal'
   map.resources :vendas
-
   map.resources :produtos
-
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

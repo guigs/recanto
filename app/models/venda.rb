@@ -1,11 +1,5 @@
 class Venda < ActiveRecord::Base
 
-  #def initialize(data)
-  #  super
-  #  self.quantidade = 1
-  #  self.data = data
-  #end
-
   def custo_total
     custo_unitario * quantidade
   end
@@ -28,6 +22,9 @@ class Venda < ActiveRecord::Base
     end
     if f.has_key?(:quantidade)
       self.quantidade = f[:quantidade].gsub(',','.').to_f
+    end
+    if f.has_key?(:"data(1i)") && f.has_key?(:"data(2i)") && f.has_key?(:"data(3i)")
+      self.data = Date.civil(f[:"data(1i)"].to_i, f[:"data(2i)"].to_i, f[:"data(3i)"].to_i)
     end
     if f.has_key?(:data)
       self.data = f[:data]
