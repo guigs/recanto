@@ -1,0 +1,6 @@
+<% form_tag(vendas_url, :method => :get) do %>
+
+  <%= select_date(Time.now, :order => [:day, :month, :year], :start_year => 2007, :end_year => Time.now.year) %>
+  <%= submit_tag 'Vendas do dia' %>
+
+<% end %>

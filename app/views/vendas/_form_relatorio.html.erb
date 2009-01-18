@@ -1,0 +1,6 @@
+<% form_tag(url_for(:action => 'mensal'), :method => :get) do %>
+
+  <%= select_year(Time.now, :start_year => 2007, :end_year => Time.now.year) %>
+  <%= submit_tag 'Relatório' %>
+
+<% end %>
